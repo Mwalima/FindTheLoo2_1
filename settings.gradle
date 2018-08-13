@@ -1,0 +1,1 @@
+include ':feature_find_the_loo', ':app', ':base', ':instantapp'
