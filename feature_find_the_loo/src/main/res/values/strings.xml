@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FindTheLoo</string>
     <string name="title_activity_maps">Find the loo</string>
+    <string name="option_get_place">option_get_place</string>
 </resources>
