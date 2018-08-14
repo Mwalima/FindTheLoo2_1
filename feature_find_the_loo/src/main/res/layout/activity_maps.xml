@@ -15,7 +15,8 @@
         android:layout_marginTop="49dp"
         android:ems="10"
         android:hint="Type the name of the location"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:layout_alignParentLeft="true" />
 
     <Button
         android:id="@+id/B_search"
@@ -26,7 +27,9 @@
         android:layout_alignTop="@+id/onFocus"
         android:layout_marginEnd="13dp"
         android:onClick="onClick"
-        android:text="Search" />
+        android:text="Search"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="13dp" />
 
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -41,19 +44,21 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/B_supermarkten"
         android:layout_marginTop="4dp"
-        tools:context=".MapsActivity" />
+        tools:context=".MapsActivity"
+        tools:ignore="UnknownId" />
 
-    <!--<Button-->
-        <!--android:id="@+id/B_supermarkten"-->
-        <!--style="@style/Widget.AppCompat.Button.Small"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/onFocus"-->
-        <!--android:layout_toStartOf="@+id/B_restaurants"-->
-        <!--android:onClick="onClick"-->
-        <!--android:text="Supermarkt"-->
-        <!--android:textSize="8sp"-->
-        <!--android:layout_toLeftOf="@+id/B_restaurants" />-->
+    <Button
+        android:id="@+id/B_supermarkten"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/onFocus"
+        android:layout_toStartOf="@+id/B_restaurants"
+        android:onClick="onClick"
+        android:text="Supermarkt"
+        android:textSize="8sp"
+        android:layout_toLeftOf="@+id/B_restaurants"
+        tools:ignore="UnknownId" />
 
     <!--<Button-->
         <!--android:id="@+id/B_urinoir"-->

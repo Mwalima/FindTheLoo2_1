@@ -1,5 +1,7 @@
 package com.example.mwalima.findtheloo2.feature_find_the_loo;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -22,8 +24,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -42,6 +46,9 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import java.io.IOException;
+import java.util.List;
 
 /**
  * An activity that displays a map showing the place at the device's current location.
@@ -145,8 +152,8 @@ public class MapsActivity extends AppCompatActivity
                 return infoWindow;
             }
         });
-    // Prompt the user for permission.
-                getLocationPermission();
+        // Prompt the user for permission.
+        getLocationPermission();
 
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
@@ -185,7 +192,7 @@ public class MapsActivity extends AppCompatActivity
                     }
                 });
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }
@@ -228,7 +235,7 @@ public class MapsActivity extends AppCompatActivity
                 mLastKnownLocation = null;
                 getLocationPermission();
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }
@@ -271,6 +278,7 @@ public class MapsActivity extends AppCompatActivity
 
     /**
      * Sets up the options menu.
+     *
      * @param menu The options menu.
      * @return Boolean.
      */
@@ -282,6 +290,7 @@ public class MapsActivity extends AppCompatActivity
 
     /**
      * Handles a click on the menu option to get a place.
+     *
      * @param item The menu item to handle.
      * @return Boolean.
      */
@@ -305,8 +314,7 @@ public class MapsActivity extends AppCompatActivity
         if (mLocationPermissionGranted) {
             // Get the likely places - that is, the businesses and other points of interest that
             // are the best match for the device's current location.
-            @SuppressWarnings("MissingPermission") final
-            Task<PlaceLikelihoodBufferResponse> placeResult =
+            @SuppressWarnings("MissingPermission") final Task<PlaceLikelihoodBufferResponse> placeResult =
                     mPlaceDetectionClient.getCurrentPlace(null);
             placeResult.addOnCompleteListener
                     (new OnCompleteListener<PlaceLikelihoodBufferResponse>() {
@@ -370,6 +378,7 @@ public class MapsActivity extends AppCompatActivity
             getLocationPermission();
         }
     }
+
     /**
      * Saves the state of the map when the activity is paused.
      */
@@ -380,5 +389,107 @@ public class MapsActivity extends AppCompatActivity
             outState.putParcelable(KEY_LOCATION, mLastKnownLocation);
             super.onSaveInstanceState(outState);
         }
+    }
+
+    public void onClick(View v) {
+        Object dataTransfer[] = new Object[2];
+        GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
+        EditText tf_location = findViewById(R.id.onFocus);
+        String location = tf_location.getText().toString();
+
+        if (v.getId() != 0) {
+            if (R.id.B_search > 0) {
+                List<Address> addressList;
+
+                if (!location.equals("")) {
+                    Geocoder geocoder = new Geocoder(this);
+
+                    try {
+                        addressList = geocoder.getFromLocationName(location, 5);
+
+                        if (addressList != null) {
+                            for (int i = 0; i < addressList.size(); i++) {
+                                LatLng latLng = new LatLng(addressList.get(i).getLatitude(), addressList.get(i).getLongitude());
+                                MarkerOptions markerOptions = new MarkerOptions();
+                                markerOptions.position(latLng);
+                                markerOptions.title(location);
+                                mMap.addMarker(markerOptions);
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17.0f));
+                                mMap.animateCamera(CameraUpdateFactory.zoomTo(17), 2000, null);
+                            }
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (R.id.B_supermarkten > 0) {
+                    mMap.clear();
+                    String supermarkt = "supermarket";
+                    String url = getUrl(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude(), supermarkt);
+                    dataTransfer[0] = mMap;
+                    dataTransfer[1] = url;
+                    getNearbyPlacesData.execute(dataTransfer);
+                    Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde supermarkten", Toast.LENGTH_SHORT).show();
+                }
+//            case R.id.B_cafe:
+//                mMap.clear();
+//                String cafe = "cafe";
+//                url = getUrl(lastlocation.getLatitude(), lastlocation.getLongitude(),cafe);
+//                dataTransfer[0] = mMap;
+//                dataTransfer[1] = url;
+//                getNearbyPlacesData.execute(dataTransfer);
+//                Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde cafe`s", Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.B_restaurants:
+//                mMap.clear();
+//                String restaurant = "restaurant";
+//                url = getUrl(lastlocation.getLatitude(), lastlocation.getLongitude(),restaurant);
+//                dataTransfer[0] = mMap;
+//                dataTransfer[1] = url;
+//                getNearbyPlacesData.execute(dataTransfer);
+//                Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde restaurants", Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.B_mcdonalds:
+//                mMap.clear();
+//                String mcdonalds = "mcdonalds";
+//                url = getUrl(lastlocation.getLatitude(), lastlocation.getLongitude(), mcdonalds);
+//                dataTransfer[0] = mMap;
+//                dataTransfer[1] = url;
+//                getNearbyPlacesData.execute(dataTransfer);
+//                Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde mcdonalds", Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.B_urinoir:
+//                mMap.clear();
+//                String urinoir = "urinal";
+//                url = getUrl(lastlocation.getLatitude(), lastlocation.getLongitude(), urinoir);
+//                dataTransfer[0] = mMap;
+//                dataTransfer[1] = url;
+//                getNearbyPlacesData.execute(dataTransfer);
+//                Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde urinoir`s", Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.B_loo:
+//                mMap.clear();
+//                String loo = "public toilet";
+//                url = getUrl(lastlocation.getLatitude(), lastlocation.getLongitude(), loo);
+//                dataTransfer[0] = mMap;
+//                dataTransfer[1] = url;
+//                getNearbyPlacesData.execute(dataTransfer);
+//                Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde public toilets", Toast.LENGTH_SHORT).show();
+//                break;
+            }
+        }
+    }
+
+    private String getUrl(double latitude , double longitude , String nearbyPlace)
+    {
+        StringBuilder googlePlaceUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+        googlePlaceUrl.append("location=" + latitude + "," + longitude);
+        googlePlaceUrl.append("&radius=1000");
+        googlePlaceUrl.append("&types="+ nearbyPlace);
+        googlePlaceUrl.append("&sensor=true");
+        googlePlaceUrl.append("&key="+"AIzaSyBN62Vax75G8e5KbX_72_PeLvi2J5u1AJ4");
+
+        Log.d("MapsActivity", "url = "+googlePlaceUrl.toString());
+        return googlePlaceUrl.toString();
     }
 }
