@@ -6,6 +6,7 @@ package com.example.mwalima.findtheloo2.feature_find_the_loo;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -17,12 +18,16 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.google.android.gms.maps.model.BitmapDescriptorFactory.HUE_RED;
+
 
 class GetNearbyPlacesData extends AsyncTask<Object, String, String> {
 
     private String googlePlacesData;
     private GoogleMap mMap;
-    String url;
+    private String url;
+    View v;
+
 
     @Override
     protected String doInBackground(Object... objects){
@@ -35,7 +40,6 @@ class GetNearbyPlacesData extends AsyncTask<Object, String, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return googlePlacesData;
     }
 
@@ -46,11 +50,12 @@ class GetNearbyPlacesData extends AsyncTask<Object, String, String> {
         DataParser parser = new DataParser();
         nearbyPlaceList = parser.parse(s);
         Log.d("nearbyplacesdata","called parse method");
-        showNearbyPlaces(nearbyPlaceList);
+        showNearbyPlaces(nearbyPlaceList, HUE_RED);
     }
 
-    private void showNearbyPlaces(List<HashMap<String, String>> nearbyPlaceList)
+    private void showNearbyPlaces(List<HashMap<String, String>> nearbyPlaceList , float color)
     {
+
         for(int i = 0; i < nearbyPlaceList.size(); i++)
         {
             MarkerOptions markerOptions = new MarkerOptions();
@@ -64,7 +69,8 @@ class GetNearbyPlacesData extends AsyncTask<Object, String, String> {
             LatLng latLng = new LatLng( lat, lng);
             markerOptions.position(latLng);
             markerOptions.title(placeName + " : "+ vicinity);
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+
+            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
 
             mMap.addMarker(markerOptions);
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));

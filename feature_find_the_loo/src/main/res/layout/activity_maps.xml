@@ -12,11 +12,9 @@
         android:layout_height="45dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="49dp"
         android:ems="10"
         android:hint="Type the name of the location"
-        android:inputType="textPersonName"
-        android:layout_alignParentLeft="true" />
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/B_search"
@@ -52,78 +50,70 @@
         style="@style/Widget.AppCompat.Button.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/onFocus"
-        android:layout_toStartOf="@+id/B_restaurants"
         android:onClick="onClick"
         android:text="Supermarkt"
         android:textSize="8sp"
-        android:layout_toLeftOf="@+id/B_restaurants"
         tools:ignore="UnknownId" />
 
-    <!--<Button-->
-        <!--android:id="@+id/B_urinoir"-->
-        <!--style="@style/Widget.AppCompat.Button.Small"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_below="@+id/onFocus"-->
-        <!--android:onClick="onClick"-->
-        <!--android:text="Urinoirs"-->
-        <!--android:textSize="8sp"-->
-        <!--android:layout_alignParentLeft="true" />-->
+    <Button
+        android:id="@+id/B_cafe"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/onFocus"
+        android:layout_toEndOf="@+id/B_restaurants"
+        android:onClick="onClick"
+        android:text="Cafe"
+        android:textSize="8sp" />
 
-    <!--<Button-->
-        <!--android:id="@+id/B_cafe"-->
-        <!--style="@style/Widget.AppCompat.Button.Small"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/onFocus"-->
-        <!--android:layout_toEndOf="@+id/B_urinoir"-->
-        <!--android:onClick="onClick"-->
-        <!--android:text="Cafe"-->
-        <!--android:textSize="8sp"-->
-        <!--android:layout_toRightOf="@+id/B_urinoir" />-->
+    <Button
+        android:id="@+id/B_restaurants"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/onFocus"
+        android:layout_toEndOf="@+id/B_supermarkten"
+        android:onClick="onClick"
+        android:text="Rest"
+        android:textSize="8sp" />
 
-    <!--<Button-->
-        <!--android:id="@+id/B_mcdonalds"-->
-        <!--style="@style/Widget.AppCompat.Button.Small"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/onFocus"-->
-        <!--android:layout_toEndOf="@+id/B_cafe"-->
-        <!--android:onClick="onClick"-->
-        <!--android:text="Mcdonalds"-->
-        <!--android:textSize="8sp"-->
-        <!--android:layout_toRightOf="@+id/B_cafe" />-->
+    <Button
+        android:id="@+id/B_mcdonalds"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/onFocus"
+        android:layout_toEndOf="@+id/B_cafe"
+        android:onClick="onClick"
+        android:text="Mcdonalds"
+        android:textSize="8sp"
+        android:layout_toRightOf="@+id/B_cafe" />
 
 
-    <!--<Button-->
-        <!--android:id="@+id/B_restaurants"-->
-        <!--style="@style/Widget.AppCompat.Button.Small"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignBaseline="@+id/B_supermarkten"-->
-        <!--android:layout_alignBottom="@+id/B_supermarkten"-->
-        <!--android:layout_toStartOf="@+id/B_loo"-->
-        <!--android:autoSizeMaxTextSize="@android:dimen/dialog_min_width_major"-->
-        <!--android:onClick="onClick"-->
-        <!--android:text="Rest."-->
-        <!--android:textSize="8sp"-->
-        <!--android:layout_toLeftOf="@+id/B_loo" />-->
+    <Button
+        android:id="@+id/B_loo"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="81dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/onFocus"
+        android:layout_toEndOf="@+id/B_urinoir"
+        android:focusedByDefault="true"
+        android:onClick="onClick"
+        android:text="public loo"
+        android:textSize="8sp" />
 
-    <!--<Button-->
-        <!--android:id="@+id/B_loo"-->
-        <!--style="@style/Widget.AppCompat.Button.Small"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignBaseline="@+id/B_cafe"-->
-        <!--android:layout_alignBottom="@+id/B_cafe"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:focusedByDefault="true"-->
-        <!--android:onClick="onClick"-->
-        <!--android:text="2theloo"-->
-        <!--android:textSize="8sp"-->
-        <!--android:layout_alignParentRight="true" />-->
+    <Button
+        android:id="@+id/B_urinoir"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/onFocus"
+        android:layout_toEndOf="@+id/B_mcdonalds"
+        android:onClick="onClick"
+        android:text="Urinoirs"
+        android:textSize="8sp" />
 
 
 </RelativeLayout>
