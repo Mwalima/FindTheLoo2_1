@@ -1,4 +1,4 @@
-package com.example.mwalima.findtheloo2.feature_find_the_loo;
+package com.application.mwalima.findtheloo2.feature_find_the_loo;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.mwalima.findtheloo2.feature_find_the_loo.test", appContext.getPackageName());
+        assertEquals("com.application.mwalima.findtheloo2.feature_find_the_loo.test", appContext.getPackageName());
     }
 }

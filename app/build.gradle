@@ -6,7 +6,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.example.mwalima.findtheloo2.app"
+        applicationId "com.application.mwalima.findtheloo2.app"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1

@@ -1,4 +1,4 @@
-package com.example.mwalima.findtheloo2.feature_find_the_loo;
+package com.application.mwalima.findtheloo2.feature_find_the_loo;
 
 import org.junit.Test;
 

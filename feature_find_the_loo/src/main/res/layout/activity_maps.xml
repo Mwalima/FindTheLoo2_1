@@ -15,7 +15,8 @@
         android:layout_alignParentTop="true"
         android:ems="10"
         android:hint="Type the name of the location"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:layout_alignParentLeft="true" />
 
     <Button
         android:id="@+id/B_search"

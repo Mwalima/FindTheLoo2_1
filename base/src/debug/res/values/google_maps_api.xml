@@ -4,7 +4,7 @@
 
     To get one, follow this link, follow the directions and press "Create" at the end:
 
-    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=CE:EF:CC:4B:94:A9:A6:D2:E6:2C:8D:9A:78:6D:64:BD:2A:A4:58:7E%3Bcom.example.mwalima.findtheloo2.feature_find_the_loo
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=CE:EF:CC:4B:94:A9:A6:D2:E6:2C:8D:9A:78:6D:64:BD:2A:A4:58:7E%3Bcom.application.mwalima.findtheloo2.feature_find_the_loo
 
     You can also add your credentials to an existing key, using these values:
 
