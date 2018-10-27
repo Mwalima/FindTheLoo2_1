@@ -429,7 +429,7 @@ public class MapsActivity extends AppCompatActivity
                     geocoder = new Geocoder(this);
 
                     try {
-                        addressList = geocoder.getFromLocationName(location, 5);
+                        addressList = geocoder.getFromLocationName(location, 10);
 
                         if (addressList != null) {
                             for (int i = 0; i < addressList.size(); i++) {
@@ -438,8 +438,8 @@ public class MapsActivity extends AppCompatActivity
                                 markerOptions.position(latLng);
                                 markerOptions.title(location);
                                 mMap.addMarker(markerOptions);
-                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 17.0f));
-                                mMap.animateCamera(CameraUpdateFactory.zoomTo(17), 1000, null);
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12.0f));
+                                mMap.animateCamera(CameraUpdateFactory.zoomTo(12), 2000, null);
                             }
                         }
                     } catch (IOException e) {
@@ -449,22 +449,23 @@ public class MapsActivity extends AppCompatActivity
             }
             if (v == superbutton) {
                 mMap.clear();
-                String name = "supermarkt";
-                String type = "groseries";
+                String name = "supermarket";
+                String type = "grocery_or_supermarket";
                 if (location.length() >= 2) {
                     for (Address element : addressList) {
                         url = getUrl(element.getLatitude(), element.getLongitude(), name, type);
+                        Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde supermarkten in "+ location, Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     if (mLastKnownLocation.getLatitude() >= 0) {
                         url = getUrl(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude(), name, type);
-
+                        Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde supermarkten", Toast.LENGTH_SHORT).show();
                     }
                 }
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
                 getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde supermarkten", Toast.LENGTH_SHORT).show();
+
             }
 
             if (v == cafebutton) {
@@ -474,16 +475,17 @@ public class MapsActivity extends AppCompatActivity
                 if (location.length() >= 2) {
                     for (Address element : addressList) {
                         url = getUrl(element.getLatitude(), element.getLongitude(), name, type);
+                        Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde cafe`s in"+location, Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     if (mLastKnownLocation.getLatitude() >= 0) {
                         url = getUrl(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude(), name, type);
+                        Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde cafe`s", Toast.LENGTH_SHORT).show();
                     }
                 }
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
                 getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde cafe`s", Toast.LENGTH_SHORT).show();
             }
             if (v == restbutton) {
                 mMap.clear();
@@ -492,37 +494,37 @@ public class MapsActivity extends AppCompatActivity
                 if (location.length() >= 2) {
                     for (Address element : addressList) {
                         url = getUrl(element.getLatitude(), element.getLongitude(), name, type);
+                        Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde restaurants in "+ location, Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     if (mLastKnownLocation.getLatitude() >= 0) {
                         url = getUrl(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude(), name, type);
-
+                        Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde restaurants", Toast.LENGTH_SHORT).show();
                     }
                 }
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
                 getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde restaurants", Toast.LENGTH_SHORT).show();
             }
 
             if (v == mcbutton) {
                 mMap.clear();
-                String type = "food";
+                String type = "meal_takeaway";
                 String name = "mcdonalds";
                 if (location.length() >= 2) {
                     for (Address element : addressList) {
                         url = getUrl(element.getLatitude(), element.getLongitude(), name, type);
+                        Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde mcdonalds in "+location, Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     if (mLastKnownLocation.getLatitude() >= 0) {
                         url = getUrl(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude(), name, type);
-
+                        Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde mcdonalds", Toast.LENGTH_SHORT).show();
                     }
                 }
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
                 getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde mcdonalds", Toast.LENGTH_SHORT).show();
             }
 
             if (v == urinoirbutton) {
@@ -532,17 +534,18 @@ public class MapsActivity extends AppCompatActivity
                 if (location.length() >= 2) {
                     for (Address element : addressList) {
                         url = getUrl(element.getLatitude(), element.getLongitude(), name, type);
+                        Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde urinoir`s in "+location, Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     if (mLastKnownLocation.getLatitude() >= 0) {
                         url = getUrl(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude(), name, type);
+                        Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde urinoir`s", Toast.LENGTH_SHORT).show();
 
                     }
                 }
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
                 getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde urinoir`s", Toast.LENGTH_SHORT).show();
             }
             if (v == loobutton) {
                 mMap.clear();
@@ -551,17 +554,17 @@ public class MapsActivity extends AppCompatActivity
                 if (location.length() >= 2) {
                     for (Address element : addressList) {
                         url = getUrl(element.getLatitude(), element.getLongitude(), name, type);
+                        Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde public toilets in"+location, Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     if (mLastKnownLocation.getLatitude() >= 0) {
                         url = getUrl(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude(), name, type);
-
+                        Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde public toilets", Toast.LENGTH_SHORT).show();
                     }
                 }
                 dataTransfer[0] = mMap;
                 dataTransfer[1] = url;
                 getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Toon dichtsbijzijnde public toilets", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -572,6 +575,7 @@ public class MapsActivity extends AppCompatActivity
         googlePlacesUrl.append("&radius=" + 3000);
         googlePlacesUrl.append("&name=" + nearbyPlace);
         googlePlacesUrl.append("&type=" + type);
+        googlePlacesUrl.append("&opening_hours=open_now");
         googlePlacesUrl.append("&sensor=true");
         googlePlacesUrl.append("&key=" + "AIzaSyBN62Vax75G8e5KbX_72_PeLvi2J5u1AJ4");
 

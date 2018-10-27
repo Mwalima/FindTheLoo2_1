@@ -4,7 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:background="@android:color/darker_gray">
 
     <EditText
         android:id="@+id/onFocus"
@@ -22,12 +23,12 @@
         android:layout_width="100dp"
         android:layout_height="45dp"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/onFocus"
         android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
         android:onClick="onClick"
-        android:text="Search"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="13dp" />
+        android:text="Search" />
 
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -47,11 +48,11 @@
 
     <Button
         android:id="@+id/B_supermarkten"
-        style="@style/Widget.AppCompat.Button.Small"
-        android:layout_width="wrap_content"
+        style="@android:style/Widget.Button"
+        android:layout_width="66dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/onFocus"
+        android:layout_toEndOf="@+id/B_mcdonalds"
         android:onClick="onClick"
         android:text="Supermarkt"
         android:textSize="8sp"
@@ -59,8 +60,8 @@
 
     <Button
         android:id="@+id/B_cafe"
-        style="@style/Widget.AppCompat.Button.Small"
-        android:layout_width="wrap_content"
+        style="@android:style/Widget.Button"
+        android:layout_width="59dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/onFocus"
         android:layout_toEndOf="@+id/B_restaurants"
@@ -70,47 +71,46 @@
 
     <Button
         android:id="@+id/B_restaurants"
-        style="@style/Widget.AppCompat.Button.Small"
-        android:layout_width="wrap_content"
+        style="@android:style/Widget.Button"
+        android:layout_width="63dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/onFocus"
         android:layout_toEndOf="@+id/B_supermarkten"
         android:onClick="onClick"
-        android:text="Rest"
+        android:text="Rest."
         android:textSize="8sp" />
 
     <Button
         android:id="@+id/B_mcdonalds"
-        style="@style/Widget.AppCompat.Button.Small"
-        android:layout_width="wrap_content"
+        style="@android:style/Widget.Button"
+        android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/onFocus"
-        android:layout_toEndOf="@+id/B_cafe"
+        android:layout_toEndOf="@+id/B_urinoir"
         android:onClick="onClick"
         android:text="Mcdonalds"
-        android:textSize="8sp"
-        android:layout_toRightOf="@+id/B_cafe" />
+        android:textSize="8sp" />
 
 
     <Button
         android:id="@+id/B_loo"
-        style="@style/Widget.AppCompat.Button.Small"
-        android:layout_width="81dp"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="62dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/onFocus"
-        android:layout_toEndOf="@+id/B_urinoir"
         android:focusedByDefault="true"
         android:onClick="onClick"
-        android:text="public loo"
+        android:text="Public Toilet"
         android:textSize="8sp" />
 
     <Button
         android:id="@+id/B_urinoir"
-        style="@style/Widget.AppCompat.Button.Small"
-        android:layout_width="wrap_content"
+        style="@android:style/Widget.Button.Small"
+        android:layout_width="49dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/onFocus"
-        android:layout_toEndOf="@+id/B_mcdonalds"
+        android:layout_toEndOf="@+id/B_loo"
         android:onClick="onClick"
         android:text="Urinoirs"
         android:textSize="8sp" />
